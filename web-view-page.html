@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>外部h5页面</title>
+</head>
+<body>
+	<!-- 微信 JS-SDK 如果不需要兼容小程序，则无需引用此 JS 文件。 -->  
+	<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>  
+	<!-- uni 的 SDK，必须引用。 -->  
+	<script type="text/javascript" src="//js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.0.1.52.js"></script>
+	
+	
+	<div>我是other页面</div>
+	<button>发送</button>
+	<div class="content">接收到的数据：</div>
+	
+	<script>
+		// 在引用依赖的文件后，需要在 HTML 中监听 UniAppJSBridgeReady 事件触发后，才能安全调用 uni 的 API。
+		document.addEventListener('UniAppJSBridgeReady', function() {  
+		    uni.getEnv(function(res) {  
+		        console.log('当前环境：' + JSON.stringify(res));  
+		    });  
+				
+				uni.postMessage({  
+						data: {  
+								action: 'postMessage'  
+						}  
+				}); 
+		});
+	</script>
+</body>
+</html>
