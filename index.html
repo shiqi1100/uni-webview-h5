@@ -28,20 +28,17 @@
 								action: 'postMessage'  
 						}  
 				}); 
+				const btn = document.querySelector('.btn-send')
+				console.log(btn);
+				btn.addEventListener('click', () => {
+					uni.postMessage({
+							sendData: {  
+									data: '发送的数据！！'  
+							}  
+					}); 
+				})
 		});
 		
-		function send() {
-			
-			const btn = document.querySelector('.btn-send')
-			console.log(btn);
-			btn.addEventListener('click', () => {
-				uni.postMessage({
-						sendData: {  
-								data: '发送的数据！！'  
-						}  
-				}); 
-			})
-		}
 	</script>
 </body>
 </html>
